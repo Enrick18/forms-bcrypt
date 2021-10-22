@@ -1,0 +1,19 @@
+.login-page {
+  max-width: 350px;
+  margin: 60px;
+  position: relative;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-val {
+  margin-top: 10px;
+}
+
+.rightside{
+  float: right;
+  width: 30%;
+}

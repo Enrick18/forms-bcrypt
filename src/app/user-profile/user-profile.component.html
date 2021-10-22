@@ -1,0 +1,122 @@
+<div class="row">
+<div class="col leftside">
+<mat-card class="login-page1">
+    <mat-card-title>User-Profile (Template)</mat-card-title>
+    <mat-card-content>
+
+      <form class="login-form1 data-form" 
+      (ngSubmit)="onSubmit(userprofile)" 
+      #userprofile="ngForm">
+
+    <mat-form-field hintLabel="Max 20 characters" appearance="fill" >
+        <mat-label>FirstName</mat-label>
+        <input matInput 
+        type="text" 
+        name="firstname"
+        [(ngModel)]='val.firstname'
+        placeholder="FirstName"
+        required
+        maxlength="20"
+        [ngModelOptions]="{ updateOn: 'blur' }"
+        #firstname="ngModel"
+        />
+        <mat-error *ngIf="firstname.errors?.required">First name required</mat-error>
+        <mat-error *ngIf="firstname.errors?.maxlength">Max 20 characters</mat-error>
+    </mat-form-field>
+    
+        <br>
+
+    <mat-form-field hintLabel="Max 20 characters" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput 
+        type="text" 
+        name="lastname"
+        [(ngModel)]='val.lastname'
+        placeholder="LastName"
+        required
+        maxlength="20"
+        [ngModelOptions]="{ updateOn: 'blur' }"
+        #lastname="ngModel"
+        />
+        <mat-error *ngIf="lastname.errors?.required">Last name required</mat-error>
+        <mat-error *ngIf="lastname.errors?.maxlength">Max 20 characters</mat-error>
+    </mat-form-field>
+    
+        <br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <input matInput 
+        type="number" 
+        name="age"
+        [(ngModel)]='val.age'
+        placeholder="Age"
+        min="12"
+        max="70"
+        required
+        [ngModelOptions]="{ updateOn: 'blur' }"
+        #age="ngModel"
+        />
+        <mat-error *ngIf="age.errors?.required">Age required</mat-error>
+        <mat-error *ngIf="age.errors?.max">Age should be atleast 70 and below</mat-error>
+        <mat-error *ngIf="age.errors?.min">Age should be atleast 12 and above</mat-error>
+    </mat-form-field>
+    
+        <br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput 
+          type="email" 
+          name="email"
+          email 
+          [(ngModel)]='val.email'
+          placeholder="Email"
+          required
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          #email="ngModel"
+          />
+          <mat-error *ngIf="email.errors?.required">Email required</mat-error>
+          <mat-error *ngIf="email.errors?.email">Invalid Email</mat-error>
+    </mat-form-field>
+    
+        <br>
+        
+
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+          <input matInput 
+          type="password" 
+          [(ngModel)]='val.password'
+          name="password" 
+          required
+          minlength="6"
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          placeholder="Password" 
+          #password="ngModel"
+          />
+          <mat-error *ngIf="password.errors?.required">Password required</mat-error>
+          <mat-error *ngIf="password.errors?.minlength">Minimum 6 characters</mat-error>
+    </mat-form-field>
+    
+        <br>
+
+        <button mat-raised-button color="primary" [disabled]=!userprofile.valid>Submit</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="col rightside">
+  <mat-card *ngIf ="showMe" class="result-page1">
+    <mat-card-title>User-Profile (Template)</mat-card-title>
+    <mat-card-content>
+    <h3>FirstName: {{val.firstname}}</h3>
+    <h3>LasttName: {{val.lastname}}</h3>
+    <h3>Age: {{val.age}}</h3>
+    <h3>Email: {{val.email}}</h3>
+    <h3>Password: {{pass}}</h3>
+  </mat-card-content>
+</mat-card>
+</div>
+</div>
